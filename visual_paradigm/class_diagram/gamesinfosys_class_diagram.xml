@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://www.visual-paradigm.com/product/vpuml/modelexporter" name="GamesInfoSys UML Class Diagram" umlVersion="2.x" exporterVersion="18.0" author="Codex">
+  <Models>
+<Model id="cdc_tracked" modelType="Class" name="TrackedGame"><ChildModels>
+  <Model id="cdc_tracked_a00" modelType="Attribute" name="«class» TrackedGame"/>
+  <Model id="cdc_tracked_a1" modelType="Attribute" name="+ Id : long"/>
+  <Model id="cdc_tracked_a2" modelType="Attribute" name="+ RawgGameId : int?"/>
+  <Model id="cdc_tracked_a3" modelType="Attribute" name="+ Name : string?"/>
+  <Model id="cdc_tracked_a4" modelType="Attribute" name="+ SteamAppId : string?"/>
+  <Model id="cdc_tracked_a5" modelType="Attribute" name="+ CreatedUtc : DateTime"/>
+</ChildModels>
+</Model>
+<Model id="cdc_offer" modelType="Class" name="StoreOffer"><ChildModels>
+  <Model id="cdc_offer_a00" modelType="Attribute" name="«class» StoreOffer"/>
+  <Model id="cdc_offer_a1" modelType="Attribute" name="+ Id : long"/>
+  <Model id="cdc_offer_a2" modelType="Attribute" name="+ TrackedGameId : long"/>
+  <Model id="cdc_offer_a3" modelType="Attribute" name="+ Store : string"/>
+  <Model id="cdc_offer_a4" modelType="Attribute" name="+ Platform : string"/>
+  <Model id="cdc_offer_a5" modelType="Attribute" name="+ Region : string"/>
+  <Model id="cdc_offer_a6" modelType="Attribute" name="+ ExternalId : string"/>
+  <Model id="cdc_offer_a7" modelType="Attribute" name="+ Title : string"/>
+  <Model id="cdc_offer_a8" modelType="Attribute" name="+ Url : string"/>
+  <Model id="cdc_offer_a9" modelType="Attribute" name="+ Currency : string?"/>
+  <Model id="cdc_offer_a10" modelType="Attribute" name="+ PriceMinor : long?"/>
+  <Model id="cdc_offer_a11" modelType="Attribute" name="+ OriginalPriceMinor : long?"/>
+  <Model id="cdc_offer_a12" modelType="Attribute" name="+ LastSeenUtc : DateTime"/>
+</ChildModels>
+</Model>
+<Model id="cdc_price" modelType="Class" name="OfferPricePoint"><ChildModels>
+  <Model id="cdc_price_a00" modelType="Attribute" name="«class» OfferPricePoint"/>
+  <Model id="cdc_price_a1" modelType="Attribute" name="+ Id : long"/>
+  <Model id="cdc_price_a2" modelType="Attribute" name="+ StoreOfferId : long"/>
+  <Model id="cdc_price_a3" modelType="Attribute" name="+ AtUtc : DateTime"/>
+  <Model id="cdc_price_a4" modelType="Attribute" name="+ Currency : string"/>
+  <Model id="cdc_price_a5" modelType="Attribute" name="+ PriceMinor : long"/>
+  <Model id="cdc_price_a6" modelType="Attribute" name="+ OriginalPriceMinor : long?"/>
+</ChildModels>
+</Model>
+<Model id="cdc_game_summary" modelType="Class" name="GameSummary"><ChildModels>
+  <Model id="cdc_game_summary_a00" modelType="Attribute" name="«class» GameSummary"/>
+  <Model id="cdc_game_summary_a1" modelType="Attribute" name="+ Id : int"/>
+  <Model id="cdc_game_summary_a2" modelType="Attribute" name="+ Name : string"/>
+  <Model id="cdc_game_summary_a3" modelType="Attribute" name="+ Released : string?"/>
+  <Model id="cdc_game_summary_a4" modelType="Attribute" name="+ Rating : double?"/>
+  <Model id="cdc_game_summary_a5" modelType="Attribute" name="+ Genres : IReadOnlyList&lt;string&gt;"/>
+  <Model id="cdc_game_summary_a6" modelType="Attribute" name="+ Platforms : IReadOnlyList&lt;string&gt;"/>
+</ChildModels>
+</Model>
+<Model id="cdc_game_details" modelType="Class" name="GameDetails"><ChildModels>
+  <Model id="cdc_game_details_a00" modelType="Attribute" name="«class» GameDetails"/>
+  <Model id="cdc_game_details_a1" modelType="Attribute" name="+ Id : int"/>
+  <Model id="cdc_game_details_a2" modelType="Attribute" name="+ Name : string"/>
+  <Model id="cdc_game_details_a3" modelType="Attribute" name="+ Metacritic : int?"/>
+  <Model id="cdc_game_details_a4" modelType="Attribute" name="+ Website : string?"/>
+  <Model id="cdc_game_details_a5" modelType="Attribute" name="+ DescriptionPlain : string?"/>
+  <Model id="cdc_game_details_a6" modelType="Attribute" name="+ Developers : IReadOnlyList&lt;string&gt;"/>
+  <Model id="cdc_game_details_a7" modelType="Attribute" name="+ Publishers : IReadOnlyList&lt;string&gt;"/>
+  <Model id="cdc_game_details_a8" modelType="Attribute" name="+ ExternalStores : IReadOnlyList&lt;ExternalStoreLink&gt;"/>
+</ChildModels>
+</Model>
+<Model id="cdc_store_link" modelType="Class" name="ExternalStoreLink"><ChildModels>
+  <Model id="cdc_store_link_a00" modelType="Attribute" name="«class» ExternalStoreLink"/>
+  <Model id="cdc_store_link_a1" modelType="Attribute" name="+ Store : string"/>
+  <Model id="cdc_store_link_a2" modelType="Attribute" name="+ Url : string"/>
+</ChildModels>
+</Model>
+<Model id="cdc_rawg_client" modelType="Class" name="RawgClient"><ChildModels>
+  <Model id="cdc_rawg_client_a00" modelType="Attribute" name="«class» RawgClient"/>
+  <Model id="cdc_rawg_client_a1" modelType="Attribute" name="- HttpClient _http"/>
+  <Model id="cdc_rawg_client_a2" modelType="Attribute" name="- IMemoryCache _cache"/>
+  <Model id="cdc_rawg_client_o1" modelType="Operation" name="+ SearchGamesAsync(query) : Task&lt;IReadOnlyList&lt;GameSummary&gt;&gt;"/>
+  <Model id="cdc_rawg_client_o2" modelType="Operation" name="+ GetGameAsync(id) : Task&lt;GameDetails?&gt;"/>
+  <Model id="cdc_rawg_client_o3" modelType="Operation" name="+ GetScreenshotsAsync(id) : Task&lt;IReadOnlyList&lt;GameScreenshot&gt;&gt;"/>
+</ChildModels>
+</Model>
+<Model id="cdc_offer_aggregator" modelType="Class" name="OfferAggregator"><ChildModels>
+  <Model id="cdc_offer_aggregator_a00" modelType="Attribute" name="«class» OfferAggregator"/>
+  <Model id="cdc_offer_aggregator_a1" modelType="Attribute" name="- AppDbContext _db"/>
+  <Model id="cdc_offer_aggregator_a2" modelType="Attribute" name="- SteamStoreClient _steam"/>
+  <Model id="cdc_offer_aggregator_a3" modelType="Attribute" name="- CheapSharkClient _cheapShark"/>
+  <Model id="cdc_offer_aggregator_a4" modelType="Attribute" name="- UaMarketplaceScraper _uaScraper"/>
+  <Model id="cdc_offer_aggregator_o1" modelType="Operation" name="+ GetOffersForRawgGameAsync(rawgGameId) : Task&lt;IReadOnlyList&lt;StoreOffer&gt;&gt;"/>
+  <Model id="cdc_offer_aggregator_o2" modelType="Operation" name="+ SyncOffersForRawgGameAsync(rawgGameId, rawgName, details) : Task"/>
+  <Model id="cdc_offer_aggregator_o3" modelType="Operation" name="+ SetSteamAppIdAsync(rawgGameId, steamAppId) : Task"/>
+</ChildModels>
+</Model>
+<Model id="cdc_currency" modelType="Class" name="CurrencyConverter"><ChildModels>
+  <Model id="cdc_currency_a00" modelType="Attribute" name="«class» CurrencyConverter"/>
+  <Model id="cdc_currency_a1" modelType="Attribute" name="- IExchangeRateProvider _rates"/>
+  <Model id="cdc_currency_o1" modelType="Operation" name="+ ToUahAsync(amount, currency) : Task&lt;decimal?&gt;"/>
+</ChildModels>
+</Model>
+<Model id="cdc_nbu" modelType="Class" name="NbuRatesClient"><ChildModels>
+  <Model id="cdc_nbu_a00" modelType="Attribute" name="«class» NbuRatesClient"/>
+  <Model id="cdc_nbu_a1" modelType="Attribute" name="- HttpClient _http"/>
+  <Model id="cdc_nbu_a2" modelType="Attribute" name="- IMemoryCache _cache"/>
+  <Model id="cdc_nbu_o1" modelType="Operation" name="+ GetRatesToUahAsync() : Task&lt;Dictionary&lt;string, decimal&gt;&gt;"/>
+</ChildModels>
+</Model>
+    <Model id="cdc_as_tracked_offer" modelType="Association" name="1 - *"/>
+    <Model id="cdc_as_offer_price" modelType="Association" name="1 - *"/>
+    <Model id="cdc_as_details_link" modelType="Association" name="1 - *"/>
+    <Model id="cdc_dep_rawg_summary" modelType="Dependency" name="returns"/>
+    <Model id="cdc_dep_rawg_details" modelType="Dependency" name="returns"/>
+    <Model id="cdc_dep_aggregator_offer" modelType="Dependency" name="manages"/>
+    <Model id="cdc_dep_aggregator_tracked" modelType="Dependency" name="tracks"/>
+    <Model id="cdc_dep_currency_nbu" modelType="Dependency" name="uses"/>
+  </Models>
+  <Diagrams>
+    <Diagram id="cdc_diagram" name="UML Class Diagram GamesInfoSys (чиста VP)" diagramType="ClassDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="cdc_s_tracked" shapeType="Class" model="cdc_tracked" name="TrackedGame" x="60" y="70" width="230" height="195" zorder="1"/>
+        <Shape id="cdc_s_offer" shapeType="Class" model="cdc_offer" name="StoreOffer" x="370" y="70" width="260" height="260" zorder="2"/>
+        <Shape id="cdc_s_price" shapeType="Class" model="cdc_price" name="OfferPricePoint" x="720" y="70" width="250" height="195" zorder="3"/>
+        <Shape id="cdc_s_summary" shapeType="Class" model="cdc_game_summary" name="GameSummary" x="60" y="370" width="260" height="195" zorder="4"/>
+        <Shape id="cdc_s_details" shapeType="Class" model="cdc_game_details" name="GameDetails" x="370" y="370" width="290" height="240" zorder="5"/>
+        <Shape id="cdc_s_link" shapeType="Class" model="cdc_store_link" name="ExternalStoreLink" x="730" y="390" width="230" height="120" zorder="6"/>
+        <Shape id="cdc_s_rawg" shapeType="Class" model="cdc_rawg_client" name="RawgClient" x="60" y="660" width="330" height="210" zorder="7"/>
+        <Shape id="cdc_s_aggregator" shapeType="Class" model="cdc_offer_aggregator" name="OfferAggregator" x="450" y="650" width="390" height="240" zorder="8"/>
+        <Shape id="cdc_s_currency" shapeType="Class" model="cdc_currency" name="CurrencyConverter" x="900" y="650" width="260" height="160" zorder="9"/>
+        <Shape id="cdc_s_nbu" shapeType="Class" model="cdc_nbu" name="NbuRatesClient" x="900" y="830" width="260" height="180" zorder="10"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="cdc_c_tracked_offer" shapeType="Association" model="cdc_as_tracked_offer" name="1 - *" from="cdc_s_tracked" to="cdc_s_offer" connectorStyle="Rectlinear"><Points><Point x="290" y="150"/><Point x="370" y="150"/></Points></Connector>
+        <Connector id="cdc_c_offer_price" shapeType="Association" model="cdc_as_offer_price" name="1 - *" from="cdc_s_offer" to="cdc_s_price" connectorStyle="Rectlinear"><Points><Point x="630" y="150"/><Point x="720" y="150"/></Points></Connector>
+        <Connector id="cdc_c_details_link" shapeType="Association" model="cdc_as_details_link" name="1 - *" from="cdc_s_details" to="cdc_s_link" connectorStyle="Rectlinear"><Points><Point x="660" y="450"/><Point x="730" y="450"/></Points></Connector>
+        <Connector id="cdc_c_rawg_summary" shapeType="Dependency" model="cdc_dep_rawg_summary" name="returns" from="cdc_s_rawg" to="cdc_s_summary" connectorStyle="Rectlinear"><Points><Point x="180" y="660"/><Point x="180" y="540"/></Points></Connector>
+        <Connector id="cdc_c_rawg_details" shapeType="Dependency" model="cdc_dep_rawg_details" name="returns" from="cdc_s_rawg" to="cdc_s_details" connectorStyle="Rectlinear"><Points><Point x="390" y="700"/><Point x="500" y="580"/></Points></Connector>
+        <Connector id="cdc_c_ag_offer" shapeType="Dependency" model="cdc_dep_aggregator_offer" name="manages" from="cdc_s_aggregator" to="cdc_s_offer" connectorStyle="Rectlinear"><Points><Point x="560" y="650"/><Point x="500" y="300"/></Points></Connector>
+        <Connector id="cdc_c_ag_tracked" shapeType="Dependency" model="cdc_dep_aggregator_tracked" name="tracks" from="cdc_s_aggregator" to="cdc_s_tracked" connectorStyle="Rectlinear"><Points><Point x="450" y="700"/><Point x="180" y="240"/></Points></Connector>
+        <Connector id="cdc_c_currency_nbu" shapeType="Dependency" model="cdc_dep_currency_nbu" name="uses" from="cdc_s_currency" to="cdc_s_nbu" connectorStyle="Rectlinear"><Points><Point x="1030" y="780"/><Point x="1030" y="830"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+  </Diagrams>
+</Project>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://www.visual-paradigm.com/product/vpuml/modelexporter" name="GamesInfoSys Context Diagram" umlVersion="2.x" exporterVersion="18.0" author="Codex">
+  <Models>
+    <Model id="m_user" modelType="DFExternalEntity" name="Користувач">
+      <ModelProperties><StringProperty name="dfId" value="E1"/></ModelProperties>
+    </Model>
+    <Model id="m_rawg" modelType="DFExternalEntity" name="RAWG API">
+      <ModelProperties><StringProperty name="dfId" value="E2"/></ModelProperties>
+    </Model>
+    <Model id="m_steam" modelType="DFExternalEntity" name="Steam">
+      <ModelProperties><StringProperty name="dfId" value="E3"/></ModelProperties>
+    </Model>
+    <Model id="m_cheapshark" modelType="DFExternalEntity" name="CheapShark">
+      <ModelProperties><StringProperty name="dfId" value="E4"/></ModelProperties>
+    </Model>
+    <Model id="m_nbu" modelType="DFExternalEntity" name="НБУ">
+      <ModelProperties><StringProperty name="dfId" value="E5"/></ModelProperties>
+    </Model>
+    <Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри">
+      <ModelProperties>
+        <StringProperty name="dfId" value="0"/>
+        <StringProperty name="location" value="ASP.NET Core Razor Pages"/>
+      </ModelProperties>
+    </Model>
+    <Model id="m_sqlite" modelType="DFDataStore" name="SQLite: ігри, пропозиції, історія цін">
+      <ModelProperties>
+        <IntegerProperty name="type" value="0"/>
+        <StringProperty name="dfId" value="D1"/>
+      </ModelProperties>
+    </Model>
+    <Model id="f_user_req" modelType="DFDataFlow" name="Пошуковий запит, фільтри, вибір гри">
+      <FromEnd><Model id="m_user" modelType="DFExternalEntity" name="Користувач"/></FromEnd>
+      <ToEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></ToEnd>
+    </Model>
+    <Model id="f_user_resp" modelType="DFDataFlow" name="Каталог, картка гри, ціни, посилання">
+      <FromEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></FromEnd>
+      <ToEnd><Model id="m_user" modelType="DFExternalEntity" name="Користувач"/></ToEnd>
+    </Model>
+    <Model id="f_rawg_req" modelType="DFDataFlow" name="Запит метаданих гри">
+      <FromEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></FromEnd>
+      <ToEnd><Model id="m_rawg" modelType="DFExternalEntity" name="RAWG API"/></ToEnd>
+    </Model>
+    <Model id="f_rawg_resp" modelType="DFDataFlow" name="Опис, жанри, рейтинги, зображення">
+      <FromEnd><Model id="m_rawg" modelType="DFExternalEntity" name="RAWG API"/></FromEnd>
+      <ToEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></ToEnd>
+    </Model>
+    <Model id="f_store_req" modelType="DFDataFlow" name="Запит торговельних пропозицій">
+      <FromEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></FromEnd>
+      <ToEnd><Model id="m_steam" modelType="DFExternalEntity" name="Steam"/></ToEnd>
+    </Model>
+    <Model id="f_store_resp" modelType="DFDataFlow" name="Ціни магазинів і посилання">
+      <FromEnd><Model id="m_steam" modelType="DFExternalEntity" name="Steam"/></FromEnd>
+      <ToEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></ToEnd>
+    </Model>
+    <Model id="f_cheap_req" modelType="DFDataFlow" name="Запит пропозицій CheapShark">
+      <FromEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></FromEnd>
+      <ToEnd><Model id="m_cheapshark" modelType="DFExternalEntity" name="CheapShark"/></ToEnd>
+    </Model>
+    <Model id="f_cheap_resp" modelType="DFDataFlow" name="Ціни CheapShark і посилання">
+      <FromEnd><Model id="m_cheapshark" modelType="DFExternalEntity" name="CheapShark"/></FromEnd>
+      <ToEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></ToEnd>
+    </Model>
+    <Model id="f_rate_req" modelType="DFDataFlow" name="Запит курсу валют">
+      <FromEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></FromEnd>
+      <ToEnd><Model id="m_nbu" modelType="DFExternalEntity" name="НБУ"/></ToEnd>
+    </Model>
+    <Model id="f_rate_resp" modelType="DFDataFlow" name="Курс для перерахунку у UAH">
+      <FromEnd><Model id="m_nbu" modelType="DFExternalEntity" name="НБУ"/></FromEnd>
+      <ToEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></ToEnd>
+    </Model>
+    <Model id="f_write" modelType="DFDataFlow" name="Збереження результатів оновлення">
+      <FromEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></FromEnd>
+      <ToEnd><Model id="m_sqlite" modelType="DFDataStore" name="SQLite: ігри, пропозиції, історія цін"/></ToEnd>
+    </Model>
+    <Model id="f_read" modelType="DFDataFlow" name="Дані каталогу та історія цін">
+      <FromEnd><Model id="m_sqlite" modelType="DFDataStore" name="SQLite: ігри, пропозиції, історія цін"/></FromEnd>
+      <ToEnd><Model id="m_process" modelType="DFProcess" name="0. GamesInfoSys - надання інформації про відеоігри"/></ToEnd>
+    </Model>
+  </Models>
+  <Diagrams>
+    <Diagram id="d_context" name="Контекстна DFD GamesInfoSys" diagramType="DataFlowDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="s_user" shapeType="DFExternalEntity" model="m_user" name="Користувач" x="40" y="250" width="150" height="70" zorder="1"/>
+        <Shape id="s_rawg" shapeType="DFExternalEntity" model="m_rawg" name="RAWG API" x="690" y="40" width="150" height="70" zorder="2"/>
+        <Shape id="s_steam" shapeType="DFExternalEntity" model="m_steam" name="Steam" x="690" y="150" width="150" height="70" zorder="3"/>
+        <Shape id="s_cheapshark" shapeType="DFExternalEntity" model="m_cheapshark" name="CheapShark" x="690" y="260" width="150" height="70" zorder="4"/>
+        <Shape id="s_nbu" shapeType="DFExternalEntity" model="m_nbu" name="НБУ" x="690" y="370" width="150" height="70" zorder="5"/>
+        <Shape id="s_process" shapeType="DFProcess" model="m_process" name="0. GamesInfoSys - надання інформації про відеоігри" x="310" y="210" width="250" height="140" zorder="6"/>
+        <Shape id="s_sqlite" shapeType="DFDataStore" model="m_sqlite" name="SQLite: ігри, пропозиції, історія цін" x="310" y="460" width="250" height="70" zorder="7"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="c_user_req" shapeType="DFDataFlow" model="f_user_req" name="Пошуковий запит, фільтри, вибір гри" from="s_user" to="s_process" connectorStyle="Rectlinear"><Points><Point x="190" y="270"/><Point x="310" y="270"/></Points></Connector>
+        <Connector id="c_user_resp" shapeType="DFDataFlow" model="f_user_resp" name="Каталог, картка гри, ціни, посилання" from="s_process" to="s_user" connectorStyle="Rectlinear"><Points><Point x="310" y="310"/><Point x="190" y="310"/></Points></Connector>
+        <Connector id="c_rawg_req" shapeType="DFDataFlow" model="f_rawg_req" name="Запит метаданих гри" from="s_process" to="s_rawg" connectorStyle="Rectlinear"><Points><Point x="560" y="230"/><Point x="620" y="75"/><Point x="690" y="75"/></Points></Connector>
+        <Connector id="c_rawg_resp" shapeType="DFDataFlow" model="f_rawg_resp" name="Опис, жанри, рейтинги, зображення" from="s_rawg" to="s_process" connectorStyle="Rectlinear"><Points><Point x="690" y="95"/><Point x="610" y="115"/><Point x="560" y="245"/></Points></Connector>
+        <Connector id="c_steam_req" shapeType="DFDataFlow" model="f_store_req" name="Запит торговельних пропозицій" from="s_process" to="s_steam" connectorStyle="Rectlinear"><Points><Point x="560" y="260"/><Point x="690" y="185"/></Points></Connector>
+        <Connector id="c_steam_resp" shapeType="DFDataFlow" model="f_store_resp" name="Ціни магазинів і посилання" from="s_steam" to="s_process" connectorStyle="Rectlinear"><Points><Point x="690" y="205"/><Point x="560" y="285"/></Points></Connector>
+        <Connector id="c_cheap_req" shapeType="DFDataFlow" model="f_cheap_req" name="Запит пропозицій CheapShark" from="s_process" to="s_cheapshark" connectorStyle="Rectlinear"><Points><Point x="560" y="295"/><Point x="690" y="295"/></Points></Connector>
+        <Connector id="c_cheap_resp" shapeType="DFDataFlow" model="f_cheap_resp" name="Ціни CheapShark і посилання" from="s_cheapshark" to="s_process" connectorStyle="Rectlinear"><Points><Point x="690" y="315"/><Point x="560" y="320"/></Points></Connector>
+        <Connector id="c_rate_req" shapeType="DFDataFlow" model="f_rate_req" name="Запит курсу валют" from="s_process" to="s_nbu" connectorStyle="Rectlinear"><Points><Point x="560" y="335"/><Point x="690" y="405"/></Points></Connector>
+        <Connector id="c_rate_resp" shapeType="DFDataFlow" model="f_rate_resp" name="Курс для перерахунку у UAH" from="s_nbu" to="s_process" connectorStyle="Rectlinear"><Points><Point x="690" y="425"/><Point x="560" y="345"/></Points></Connector>
+        <Connector id="c_write" shapeType="DFDataFlow" model="f_write" name="Збереження результатів оновлення" from="s_process" to="s_sqlite" connectorStyle="Rectlinear"><Points><Point x="420" y="350"/><Point x="420" y="460"/></Points></Connector>
+        <Connector id="c_read" shapeType="DFDataFlow" model="f_read" name="Дані каталогу та історія цін" from="s_sqlite" to="s_process" connectorStyle="Rectlinear"><Points><Point x="455" y="460"/><Point x="455" y="350"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+  </Diagrams>
+</Project>

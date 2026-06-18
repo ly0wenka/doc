@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://www.visual-paradigm.com/product/vpuml/modelexporter" name="GamesInfoSys Readable App Diagrams" umlVersion="2.x" exporterVersion="18.0" author="Codex">
+  <Models>
+    <Model id="ra_ui" modelType="DFProcess" name="Razor Pages UI"/>
+    <Model id="ra_rawg" modelType="DFProcess" name="RawgClient"/>
+    <Model id="ra_offer" modelType="DFProcess" name="OfferAggregator"/>
+    <Model id="ra_fx" modelType="DFProcess" name="CurrencyConverter"/>
+    <Model id="ra_db" modelType="DFDataStore" name="AppDbContext / SQLite"/>
+    <Model id="ra_steam" modelType="DFProcess" name="SteamStoreClient"/>
+    <Model id="ra_cheap" modelType="DFProcess" name="CheapSharkClient"/>
+    <Model id="ra_ua" modelType="DFProcess" name="UaMarketplaceScraper"/>
+    <Model id="ra_nbu" modelType="DFProcess" name="NbuRatesClient"/>
+    <Model id="ra_cache" modelType="DFDataStore" name="IMemoryCache"/>
+    <Model id="ra_loc" modelType="DFProcess" name="Localization / UiText"/>
+    <Model id="ra_tracked" modelType="DFDataStore" name="TrackedGame"/>
+    <Model id="ra_store_offer" modelType="DFDataStore" name="StoreOffer"/>
+    <Model id="ra_price" modelType="DFDataStore" name="OfferPricePoint"/>
+    <Model id="ra_game_summary" modelType="DFDataStore" name="GameSummary"/>
+    <Model id="ra_game_details" modelType="DFDataStore" name="GameDetails"/>
+    <Model id="ra_store_link" modelType="DFDataStore" name="ExternalStoreLink"/>
+
+    <Model id="ra_f_ui_rawg" modelType="DFDataFlow" name="пошук / деталі гри"><FromEnd><Model id="ra_ui" modelType="DFProcess" name="Razor Pages UI"/></FromEnd><ToEnd><Model id="ra_rawg" modelType="DFProcess" name="RawgClient"/></ToEnd></Model>
+    <Model id="ra_f_ui_offer" modelType="DFDataFlow" name="синхронізація пропозицій"><FromEnd><Model id="ra_ui" modelType="DFProcess" name="Razor Pages UI"/></FromEnd><ToEnd><Model id="ra_offer" modelType="DFProcess" name="OfferAggregator"/></ToEnd></Model>
+    <Model id="ra_f_ui_fx" modelType="DFDataFlow" name="ціни у UAH"><FromEnd><Model id="ra_ui" modelType="DFProcess" name="Razor Pages UI"/></FromEnd><ToEnd><Model id="ra_fx" modelType="DFProcess" name="CurrencyConverter"/></ToEnd></Model>
+    <Model id="ra_f_ui_loc" modelType="DFDataFlow" name="тексти інтерфейсу"><FromEnd><Model id="ra_ui" modelType="DFProcess" name="Razor Pages UI"/></FromEnd><ToEnd><Model id="ra_loc" modelType="DFProcess" name="Localization / UiText"/></ToEnd></Model>
+    <Model id="ra_f_offer_db" modelType="DFDataFlow" name="TrackedGame, StoreOffer, PricePoint"><FromEnd><Model id="ra_offer" modelType="DFProcess" name="OfferAggregator"/></FromEnd><ToEnd><Model id="ra_db" modelType="DFDataStore" name="AppDbContext / SQLite"/></ToEnd></Model>
+    <Model id="ra_f_offer_steam" modelType="DFDataFlow" name="Steam app details / price"><FromEnd><Model id="ra_offer" modelType="DFProcess" name="OfferAggregator"/></FromEnd><ToEnd><Model id="ra_steam" modelType="DFProcess" name="SteamStoreClient"/></ToEnd></Model>
+    <Model id="ra_f_offer_cheap" modelType="DFDataFlow" name="deals by SteamAppId"><FromEnd><Model id="ra_offer" modelType="DFProcess" name="OfferAggregator"/></FromEnd><ToEnd><Model id="ra_cheap" modelType="DFProcess" name="CheapSharkClient"/></ToEnd></Model>
+    <Model id="ra_f_offer_ua" modelType="DFDataFlow" name="Prom / OLX search"><FromEnd><Model id="ra_offer" modelType="DFProcess" name="OfferAggregator"/></FromEnd><ToEnd><Model id="ra_ua" modelType="DFProcess" name="UaMarketplaceScraper"/></ToEnd></Model>
+    <Model id="ra_f_fx_nbu" modelType="DFDataFlow" name="exchange rates"><FromEnd><Model id="ra_fx" modelType="DFProcess" name="CurrencyConverter"/></FromEnd><ToEnd><Model id="ra_nbu" modelType="DFProcess" name="NbuRatesClient"/></ToEnd></Model>
+    <Model id="ra_f_cache" modelType="DFDataFlow" name="cached responses"><FromEnd><Model id="ra_rawg" modelType="DFProcess" name="RawgClient"/></FromEnd><ToEnd><Model id="ra_cache" modelType="DFDataStore" name="IMemoryCache"/></ToEnd></Model>
+    <Model id="ra_f_tracked_offer" modelType="DFDataFlow" name="1 game - many offers"><FromEnd><Model id="ra_tracked" modelType="DFDataStore" name="TrackedGame"/></FromEnd><ToEnd><Model id="ra_store_offer" modelType="DFDataStore" name="StoreOffer"/></ToEnd></Model>
+    <Model id="ra_f_offer_price" modelType="DFDataFlow" name="1 offer - price history"><FromEnd><Model id="ra_store_offer" modelType="DFDataStore" name="StoreOffer"/></FromEnd><ToEnd><Model id="ra_price" modelType="DFDataStore" name="OfferPricePoint"/></ToEnd></Model>
+    <Model id="ra_f_summary_details" modelType="DFDataFlow" name="RAWG DTOs"><FromEnd><Model id="ra_game_summary" modelType="DFDataStore" name="GameSummary"/></FromEnd><ToEnd><Model id="ra_game_details" modelType="DFDataStore" name="GameDetails"/></ToEnd></Model>
+    <Model id="ra_f_details_link" modelType="DFDataFlow" name="external store links"><FromEnd><Model id="ra_game_details" modelType="DFDataStore" name="GameDetails"/></FromEnd><ToEnd><Model id="ra_store_link" modelType="DFDataStore" name="ExternalStoreLink"/></ToEnd></Model>
+  </Models>
+  <Diagrams>
+    <Diagram id="ra_d_arch" name="Архітектурна діаграма GamesInfoSys (виправлена)" diagramType="DataFlowDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="ra_s_ui" shapeType="DFProcess" model="ra_ui" name="Razor Pages UI" x="60" y="240" width="170" height="80" zorder="1"/>
+        <Shape id="ra_s_rawg" shapeType="DFProcess" model="ra_rawg" name="RawgClient" x="330" y="60" width="170" height="70" zorder="2"/>
+        <Shape id="ra_s_offer" shapeType="DFProcess" model="ra_offer" name="OfferAggregator" x="330" y="240" width="190" height="80" zorder="3"/>
+        <Shape id="ra_s_fx" shapeType="DFProcess" model="ra_fx" name="CurrencyConverter" x="330" y="420" width="190" height="70" zorder="4"/>
+        <Shape id="ra_s_db" shapeType="DFDataStore" model="ra_db" name="AppDbContext / SQLite" x="620" y="240" width="210" height="80" zorder="5"/>
+        <Shape id="ra_s_steam" shapeType="DFProcess" model="ra_steam" name="SteamStoreClient" x="620" y="30" width="190" height="70" zorder="6"/>
+        <Shape id="ra_s_cheap" shapeType="DFProcess" model="ra_cheap" name="CheapSharkClient" x="620" y="120" width="190" height="70" zorder="7"/>
+        <Shape id="ra_s_ua" shapeType="DFProcess" model="ra_ua" name="UaMarketplaceScraper" x="620" y="400" width="220" height="70" zorder="8"/>
+        <Shape id="ra_s_nbu" shapeType="DFProcess" model="ra_nbu" name="NbuRatesClient" x="620" y="510" width="190" height="70" zorder="9"/>
+        <Shape id="ra_s_cache" shapeType="DFDataStore" model="ra_cache" name="IMemoryCache" x="900" y="260" width="170" height="70" zorder="10"/>
+        <Shape id="ra_s_loc" shapeType="DFProcess" model="ra_loc" name="Localization / UiText" x="60" y="400" width="190" height="70" zorder="11"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="ra_c_ui_rawg" shapeType="DFDataFlow" model="ra_f_ui_rawg" name="пошук / деталі гри" from="ra_s_ui" to="ra_s_rawg" connectorStyle="Rectlinear"><Points><Point x="230" y="255"/><Point x="330" y="95"/></Points></Connector>
+        <Connector id="ra_c_ui_offer" shapeType="DFDataFlow" model="ra_f_ui_offer" name="синхронізація пропозицій" from="ra_s_ui" to="ra_s_offer" connectorStyle="Rectlinear"><Points><Point x="230" y="280"/><Point x="330" y="280"/></Points></Connector>
+        <Connector id="ra_c_ui_fx" shapeType="DFDataFlow" model="ra_f_ui_fx" name="ціни у UAH" from="ra_s_ui" to="ra_s_fx" connectorStyle="Rectlinear"><Points><Point x="230" y="305"/><Point x="330" y="455"/></Points></Connector>
+        <Connector id="ra_c_ui_loc" shapeType="DFDataFlow" model="ra_f_ui_loc" name="тексти інтерфейсу" from="ra_s_ui" to="ra_s_loc" connectorStyle="Rectlinear"><Points><Point x="145" y="320"/><Point x="145" y="400"/></Points></Connector>
+        <Connector id="ra_c_offer_db" shapeType="DFDataFlow" model="ra_f_offer_db" name="TrackedGame, StoreOffer, PricePoint" from="ra_s_offer" to="ra_s_db" connectorStyle="Rectlinear"><Points><Point x="520" y="280"/><Point x="620" y="280"/></Points></Connector>
+        <Connector id="ra_c_offer_steam" shapeType="DFDataFlow" model="ra_f_offer_steam" name="Steam app details / price" from="ra_s_offer" to="ra_s_steam" connectorStyle="Rectlinear"><Points><Point x="520" y="245"/><Point x="620" y="65"/></Points></Connector>
+        <Connector id="ra_c_offer_cheap" shapeType="DFDataFlow" model="ra_f_offer_cheap" name="deals by SteamAppId" from="ra_s_offer" to="ra_s_cheap" connectorStyle="Rectlinear"><Points><Point x="520" y="265"/><Point x="620" y="155"/></Points></Connector>
+        <Connector id="ra_c_offer_ua" shapeType="DFDataFlow" model="ra_f_offer_ua" name="Prom / OLX search" from="ra_s_offer" to="ra_s_ua" connectorStyle="Rectlinear"><Points><Point x="520" y="310"/><Point x="620" y="435"/></Points></Connector>
+        <Connector id="ra_c_fx_nbu" shapeType="DFDataFlow" model="ra_f_fx_nbu" name="exchange rates" from="ra_s_fx" to="ra_s_nbu" connectorStyle="Rectlinear"><Points><Point x="520" y="455"/><Point x="620" y="545"/></Points></Connector>
+        <Connector id="ra_c_cache" shapeType="DFDataFlow" model="ra_f_cache" name="cached responses" from="ra_s_rawg" to="ra_s_cache" connectorStyle="Rectlinear"><Points><Point x="500" y="95"/><Point x="900" y="295"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+    <Diagram id="ra_d_data" name="Модель даних GamesInfoSys (виправлена)" diagramType="DataFlowDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="ra_s_tracked" shapeType="DFDataStore" model="ra_tracked" name="TrackedGame" x="80" y="120" width="220" height="80" zorder="1"/>
+        <Shape id="ra_s_store_offer" shapeType="DFDataStore" model="ra_store_offer" name="StoreOffer" x="410" y="120" width="230" height="80" zorder="2"/>
+        <Shape id="ra_s_price" shapeType="DFDataStore" model="ra_price" name="OfferPricePoint" x="750" y="120" width="230" height="80" zorder="3"/>
+        <Shape id="ra_s_summary" shapeType="DFDataStore" model="ra_game_summary" name="GameSummary" x="80" y="330" width="220" height="80" zorder="4"/>
+        <Shape id="ra_s_details" shapeType="DFDataStore" model="ra_game_details" name="GameDetails" x="410" y="330" width="230" height="80" zorder="5"/>
+        <Shape id="ra_s_link" shapeType="DFDataStore" model="ra_store_link" name="ExternalStoreLink" x="750" y="330" width="230" height="80" zorder="6"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="ra_c_tracked_offer" shapeType="DFDataFlow" model="ra_f_tracked_offer" name="1 game - many offers" from="ra_s_tracked" to="ra_s_store_offer" connectorStyle="Rectlinear"><Points><Point x="300" y="160"/><Point x="410" y="160"/></Points></Connector>
+        <Connector id="ra_c_offer_price" shapeType="DFDataFlow" model="ra_f_offer_price" name="1 offer - price history" from="ra_s_store_offer" to="ra_s_price" connectorStyle="Rectlinear"><Points><Point x="640" y="160"/><Point x="750" y="160"/></Points></Connector>
+        <Connector id="ra_c_summary_details" shapeType="DFDataFlow" model="ra_f_summary_details" name="RAWG DTOs" from="ra_s_summary" to="ra_s_details" connectorStyle="Rectlinear"><Points><Point x="300" y="370"/><Point x="410" y="370"/></Points></Connector>
+        <Connector id="ra_c_details_link" shapeType="DFDataFlow" model="ra_f_details_link" name="external store links" from="ra_s_details" to="ra_s_link" connectorStyle="Rectlinear"><Points><Point x="640" y="370"/><Point x="750" y="370"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+  </Diagrams>
+</Project>

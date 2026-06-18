@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://www.visual-paradigm.com/product/vpuml/modelexporter" name="GamesInfoSys App Diagrams" umlVersion="2.x" exporterVersion="18.0" author="Codex">
+  <Models>
+    <Model id="app_actor_user" modelType="Actor" name="Користувач"/>
+    <Model id="app_uc_search" modelType="UseCase" name="Шукати відеоігри"/>
+    <Model id="app_uc_view" modelType="UseCase" name="Переглядати картку гри"/>
+    <Model id="app_uc_prices" modelType="UseCase" name="Переглядати цінові пропозиції"/>
+    <Model id="app_uc_steam" modelType="UseCase" name="Уточнювати Steam App ID"/>
+    <Model id="app_uc_lang" modelType="UseCase" name="Змінювати мову інтерфейсу"/>
+    <Model id="app_uc_external" modelType="UseCase" name="Переходити до магазину"/>
+
+    <Model id="app_c_razor" modelType="Class" name="Razor Pages UI"/>
+    <Model id="app_c_rawg" modelType="Class" name="RawgClient"/>
+    <Model id="app_c_offer" modelType="Class" name="OfferAggregator"/>
+    <Model id="app_c_fx" modelType="Class" name="CurrencyConverter"/>
+    <Model id="app_c_db" modelType="Class" name="AppDbContext / SQLite"/>
+    <Model id="app_c_steam" modelType="Class" name="SteamStoreClient"/>
+    <Model id="app_c_cheap" modelType="Class" name="CheapSharkClient"/>
+    <Model id="app_c_ua" modelType="Class" name="UaMarketplaceScraper"/>
+    <Model id="app_c_nbu" modelType="Class" name="NbuRatesClient"/>
+    <Model id="app_c_cache" modelType="Class" name="IMemoryCache"/>
+    <Model id="app_c_loc" modelType="Class" name="Localization / UiText"/>
+
+    <Model id="app_cls_tracked" modelType="Class" name="TrackedGame"/>
+    <Model id="app_cls_offer" modelType="Class" name="StoreOffer"/>
+    <Model id="app_cls_price" modelType="Class" name="OfferPricePoint"/>
+    <Model id="app_cls_summary" modelType="Class" name="GameSummary"/>
+    <Model id="app_cls_details" modelType="Class" name="GameDetails"/>
+    <Model id="app_cls_link" modelType="Class" name="ExternalStoreLink"/>
+
+    <Model id="app_a_user_search" modelType="Association" name=""/>
+    <Model id="app_a_user_view" modelType="Association" name=""/>
+    <Model id="app_a_user_prices" modelType="Association" name=""/>
+    <Model id="app_a_user_steam" modelType="Association" name=""/>
+    <Model id="app_a_user_lang" modelType="Association" name=""/>
+    <Model id="app_a_user_external" modelType="Association" name=""/>
+
+    <Model id="app_d_ui_rawg" modelType="Dependency" name="search/details"/>
+    <Model id="app_d_ui_offer" modelType="Dependency" name="sync offers"/>
+    <Model id="app_d_ui_fx" modelType="Dependency" name="UAH display"/>
+    <Model id="app_d_offer_db" modelType="Dependency" name="read/write offers"/>
+    <Model id="app_d_offer_steam" modelType="Dependency" name="Steam prices"/>
+    <Model id="app_d_offer_cheap" modelType="Dependency" name="CheapShark deals"/>
+    <Model id="app_d_offer_ua" modelType="Dependency" name="Prom/OLX scrape"/>
+    <Model id="app_d_fx_nbu" modelType="Dependency" name="exchange rates"/>
+    <Model id="app_d_rawg_cache" modelType="Dependency" name="demo/cache"/>
+    <Model id="app_d_cheap_cache" modelType="Dependency" name="cache"/>
+    <Model id="app_d_ua_cache" modelType="Dependency" name="cache"/>
+    <Model id="app_d_ui_loc" modelType="Dependency" name="labels"/>
+
+    <Model id="app_as_tracked_offer" modelType="Association" name="1 - *"/>
+    <Model id="app_as_offer_price" modelType="Association" name="1 - *"/>
+    <Model id="app_as_details_link" modelType="Association" name="1 - *"/>
+  </Models>
+  <Diagrams>
+    <Diagram id="app_d_usecase" name="Use Case GamesInfoSys (з коду)" diagramType="UseCaseDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="app_s_actor_user" shapeType="Actor" model="app_actor_user" name="Користувач" x="60" y="230" width="90" height="140" zorder="1"/>
+        <Shape id="app_s_uc_search" shapeType="UseCase" model="app_uc_search" name="Шукати відеоігри" x="280" y="60" width="190" height="70" zorder="2"/>
+        <Shape id="app_s_uc_view" shapeType="UseCase" model="app_uc_view" name="Переглядати картку гри" x="280" y="150" width="190" height="70" zorder="3"/>
+        <Shape id="app_s_uc_prices" shapeType="UseCase" model="app_uc_prices" name="Переглядати цінові пропозиції" x="280" y="240" width="220" height="70" zorder="4"/>
+        <Shape id="app_s_uc_steam" shapeType="UseCase" model="app_uc_steam" name="Уточнювати Steam App ID" x="280" y="330" width="210" height="70" zorder="5"/>
+        <Shape id="app_s_uc_lang" shapeType="UseCase" model="app_uc_lang" name="Змінювати мову інтерфейсу" x="280" y="420" width="220" height="70" zorder="6"/>
+        <Shape id="app_s_uc_external" shapeType="UseCase" model="app_uc_external" name="Переходити до магазину" x="560" y="240" width="210" height="70" zorder="7"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="app_ca_user_search" shapeType="Association" model="app_a_user_search" from="app_s_actor_user" to="app_s_uc_search" connectorStyle="Rectlinear"><Points><Point x="150" y="260"/><Point x="280" y="95"/></Points></Connector>
+        <Connector id="app_ca_user_view" shapeType="Association" model="app_a_user_view" from="app_s_actor_user" to="app_s_uc_view" connectorStyle="Rectlinear"><Points><Point x="150" y="270"/><Point x="280" y="185"/></Points></Connector>
+        <Connector id="app_ca_user_prices" shapeType="Association" model="app_a_user_prices" from="app_s_actor_user" to="app_s_uc_prices" connectorStyle="Rectlinear"><Points><Point x="150" y="290"/><Point x="280" y="275"/></Points></Connector>
+        <Connector id="app_ca_user_steam" shapeType="Association" model="app_a_user_steam" from="app_s_actor_user" to="app_s_uc_steam" connectorStyle="Rectlinear"><Points><Point x="150" y="315"/><Point x="280" y="365"/></Points></Connector>
+        <Connector id="app_ca_user_lang" shapeType="Association" model="app_a_user_lang" from="app_s_actor_user" to="app_s_uc_lang" connectorStyle="Rectlinear"><Points><Point x="150" y="335"/><Point x="280" y="455"/></Points></Connector>
+        <Connector id="app_ca_user_external" shapeType="Association" model="app_a_user_external" from="app_s_actor_user" to="app_s_uc_external" connectorStyle="Rectlinear"><Points><Point x="150" y="300"/><Point x="560" y="275"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+    <Diagram id="app_d_component" name="Архітектурна діаграма GamesInfoSys (з коду)" diagramType="ClassDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="app_s_c_razor" shapeType="Class" model="app_c_razor" name="Razor Pages UI" x="60" y="230" width="180" height="80" zorder="1"/>
+        <Shape id="app_s_c_rawg" shapeType="Class" model="app_c_rawg" name="RawgClient" x="330" y="60" width="170" height="70" zorder="2"/>
+        <Shape id="app_s_c_offer" shapeType="Class" model="app_c_offer" name="OfferAggregator" x="330" y="230" width="190" height="80" zorder="3"/>
+        <Shape id="app_s_c_fx" shapeType="Class" model="app_c_fx" name="CurrencyConverter" x="330" y="390" width="190" height="70" zorder="4"/>
+        <Shape id="app_s_c_db" shapeType="Class" model="app_c_db" name="AppDbContext / SQLite" x="620" y="230" width="210" height="80" zorder="5"/>
+        <Shape id="app_s_c_steam" shapeType="Class" model="app_c_steam" name="SteamStoreClient" x="620" y="30" width="190" height="70" zorder="6"/>
+        <Shape id="app_s_c_cheap" shapeType="Class" model="app_c_cheap" name="CheapSharkClient" x="620" y="110" width="190" height="70" zorder="7"/>
+        <Shape id="app_s_c_ua" shapeType="Class" model="app_c_ua" name="UaMarketplaceScraper" x="620" y="390" width="210" height="70" zorder="8"/>
+        <Shape id="app_s_c_nbu" shapeType="Class" model="app_c_nbu" name="NbuRatesClient" x="620" y="500" width="190" height="70" zorder="9"/>
+        <Shape id="app_s_c_cache" shapeType="Class" model="app_c_cache" name="IMemoryCache" x="900" y="250" width="170" height="70" zorder="10"/>
+        <Shape id="app_s_c_loc" shapeType="Class" model="app_c_loc" name="Localization / UiText" x="60" y="380" width="190" height="70" zorder="11"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="app_cd_ui_rawg" shapeType="Dependency" model="app_d_ui_rawg" name="search/details" from="app_s_c_razor" to="app_s_c_rawg" connectorStyle="Rectlinear"><Points><Point x="240" y="240"/><Point x="330" y="95"/></Points></Connector>
+        <Connector id="app_cd_ui_offer" shapeType="Dependency" model="app_d_ui_offer" name="sync offers" from="app_s_c_razor" to="app_s_c_offer" connectorStyle="Rectlinear"><Points><Point x="240" y="270"/><Point x="330" y="270"/></Points></Connector>
+        <Connector id="app_cd_ui_fx" shapeType="Dependency" model="app_d_ui_fx" name="UAH display" from="app_s_c_razor" to="app_s_c_fx" connectorStyle="Rectlinear"><Points><Point x="240" y="300"/><Point x="330" y="425"/></Points></Connector>
+        <Connector id="app_cd_ui_loc" shapeType="Dependency" model="app_d_ui_loc" name="labels" from="app_s_c_razor" to="app_s_c_loc" connectorStyle="Rectlinear"><Points><Point x="150" y="310"/><Point x="150" y="380"/></Points></Connector>
+        <Connector id="app_cd_offer_db" shapeType="Dependency" model="app_d_offer_db" name="read/write offers" from="app_s_c_offer" to="app_s_c_db" connectorStyle="Rectlinear"><Points><Point x="520" y="270"/><Point x="620" y="270"/></Points></Connector>
+        <Connector id="app_cd_offer_steam" shapeType="Dependency" model="app_d_offer_steam" name="Steam prices" from="app_s_c_offer" to="app_s_c_steam" connectorStyle="Rectlinear"><Points><Point x="520" y="240"/><Point x="620" y="65"/></Points></Connector>
+        <Connector id="app_cd_offer_cheap" shapeType="Dependency" model="app_d_offer_cheap" name="CheapShark deals" from="app_s_c_offer" to="app_s_c_cheap" connectorStyle="Rectlinear"><Points><Point x="520" y="255"/><Point x="620" y="145"/></Points></Connector>
+        <Connector id="app_cd_offer_ua" shapeType="Dependency" model="app_d_offer_ua" name="Prom/OLX scrape" from="app_s_c_offer" to="app_s_c_ua" connectorStyle="Rectlinear"><Points><Point x="520" y="300"/><Point x="620" y="425"/></Points></Connector>
+        <Connector id="app_cd_fx_nbu" shapeType="Dependency" model="app_d_fx_nbu" name="exchange rates" from="app_s_c_fx" to="app_s_c_nbu" connectorStyle="Rectlinear"><Points><Point x="520" y="425"/><Point x="620" y="535"/></Points></Connector>
+        <Connector id="app_cd_rawg_cache" shapeType="Dependency" model="app_d_rawg_cache" name="demo/cache" from="app_s_c_rawg" to="app_s_c_cache" connectorStyle="Rectlinear"><Points><Point x="500" y="95"/><Point x="900" y="285"/></Points></Connector>
+        <Connector id="app_cd_cheap_cache" shapeType="Dependency" model="app_d_cheap_cache" name="cache" from="app_s_c_cheap" to="app_s_c_cache" connectorStyle="Rectlinear"><Points><Point x="810" y="145"/><Point x="900" y="285"/></Points></Connector>
+        <Connector id="app_cd_ua_cache" shapeType="Dependency" model="app_d_ua_cache" name="cache" from="app_s_c_ua" to="app_s_c_cache" connectorStyle="Rectlinear"><Points><Point x="830" y="425"/><Point x="900" y="285"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+    <Diagram id="app_d_data" name="Модель даних GamesInfoSys (з коду)" diagramType="ClassDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="app_s_cls_tracked" shapeType="Class" model="app_cls_tracked" name="TrackedGame" x="80" y="120" width="210" height="90" zorder="1"/>
+        <Shape id="app_s_cls_offer" shapeType="Class" model="app_cls_offer" name="StoreOffer" x="390" y="120" width="230" height="90" zorder="2"/>
+        <Shape id="app_s_cls_price" shapeType="Class" model="app_cls_price" name="OfferPricePoint" x="720" y="120" width="220" height="90" zorder="3"/>
+        <Shape id="app_s_cls_summary" shapeType="Class" model="app_cls_summary" name="GameSummary" x="80" y="330" width="210" height="80" zorder="4"/>
+        <Shape id="app_s_cls_details" shapeType="Class" model="app_cls_details" name="GameDetails" x="390" y="330" width="230" height="80" zorder="5"/>
+        <Shape id="app_s_cls_link" shapeType="Class" model="app_cls_link" name="ExternalStoreLink" x="720" y="330" width="220" height="80" zorder="6"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="app_cc_tracked_offer" shapeType="Association" model="app_as_tracked_offer" name="1 - *" from="app_s_cls_tracked" to="app_s_cls_offer" connectorStyle="Rectlinear"><Points><Point x="290" y="165"/><Point x="390" y="165"/></Points></Connector>
+        <Connector id="app_cc_offer_price" shapeType="Association" model="app_as_offer_price" name="1 - *" from="app_s_cls_offer" to="app_s_cls_price" connectorStyle="Rectlinear"><Points><Point x="620" y="165"/><Point x="720" y="165"/></Points></Connector>
+        <Connector id="app_cc_details_link" shapeType="Association" model="app_as_details_link" name="1 - * external stores" from="app_s_cls_details" to="app_s_cls_link" connectorStyle="Rectlinear"><Points><Point x="620" y="370"/><Point x="720" y="370"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+  </Diagrams>
+</Project>

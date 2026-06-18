@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://www.visual-paradigm.com/product/vpuml/modelexporter" name="GamesInfoSys Requirements" umlVersion="2.x" exporterVersion="18.0" author="Codex" containsUseCase="true">
+  <Models>
+    <Model id="req_fr_01" modelType="Requirement" name="FR-01 Пошук відеоігор">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-01"/>
+        <StringProperty name="requirementId" value="FR-01"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна надавати користувачу можливість шукати відеоігри за текстовим запитом через сторінку каталогу."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Functional test"/>
+        <StringProperty name="risk" value="Medium"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_fr_02" modelType="Requirement" name="FR-02 Перегляд картки гри">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-02"/>
+        <StringProperty name="requirementId" value="FR-02"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна відображати картку гри з назвою, описом, рейтингами, жанрами, платформами, зображеннями та зовнішніми посиланнями."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Functional test"/>
+        <StringProperty name="risk" value="Medium"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_fr_03" modelType="Requirement" name="FR-03 Отримання метаданих RAWG">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-03"/>
+        <StringProperty name="requirementId" value="FR-03"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна отримувати метадані ігор, скріншоти та посилання на магазини із RAWG API або демонстраційного набору даних."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Integration test"/>
+        <StringProperty name="risk" value="High"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_fr_04" modelType="Requirement" name="FR-04 Агрегація цінових пропозицій">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-04"/>
+        <StringProperty name="requirementId" value="FR-04"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна агрегувати пропозиції з Steam, CheapShark, Prom.ua та OLX для відстежуваної гри."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Integration test"/>
+        <StringProperty name="risk" value="High"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_fr_05" modelType="Requirement" name="FR-05 Ручне уточнення Steam App ID">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-05"/>
+        <StringProperty name="requirementId" value="FR-05"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна дозволяти користувачу вручну вказати Steam App ID або URL, якщо ідентифікатор не визначено автоматично."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Functional test"/>
+        <StringProperty name="risk" value="Medium"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_fr_06" modelType="Requirement" name="FR-06 Збереження пропозицій та історії цін">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-06"/>
+        <StringProperty name="requirementId" value="FR-06"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна зберігати відстежувані ігри, магазинні пропозиції та точки історії цін у SQLite."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Database test"/>
+        <StringProperty name="risk" value="High"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_fr_07" modelType="Requirement" name="FR-07 Конвертація цін у гривню">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-07"/>
+        <StringProperty name="requirementId" value="FR-07"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна перераховувати ціни з валют магазинів у гривню на основі курсів НБУ."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Unit test"/>
+        <StringProperty name="risk" value="Medium"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_fr_08" modelType="Requirement" name="FR-08 Зміна мови інтерфейсу">
+      <ModelProperties>
+        <StringProperty name="id" value="FR-08"/>
+        <StringProperty name="requirementId" value="FR-08"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Система повинна підтримувати перемикання культури інтерфейсу між українською та англійською мовами."/>
+        <StringProperty name="kind" value="Functional"/>
+        <StringProperty name="verifyMethod" value="Functional test"/>
+        <StringProperty name="risk" value="Low"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_nfr_01" modelType="Requirement" name="NFR-01 Стійкість зовнішніх HTTP-запитів">
+      <ModelProperties>
+        <StringProperty name="id" value="NFR-01"/>
+        <StringProperty name="requirementId" value="NFR-01"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="HTTP-клієнти повинні мати таймаути, кешування або resilience-політики для зменшення впливу помилок зовнішніх сервісів."/>
+        <StringProperty name="kind" value="Non-functional"/>
+        <StringProperty name="verifyMethod" value="Resilience test"/>
+        <StringProperty name="risk" value="High"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_nfr_02" modelType="Requirement" name="NFR-02 Продуктивність пошуку та перегляду">
+      <ModelProperties>
+        <StringProperty name="id" value="NFR-02"/>
+        <StringProperty name="requirementId" value="NFR-02"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Основні сторінки каталогу та картки гри повинні відповідати без помітних затримок для користувача в демонстраційному режимі."/>
+        <StringProperty name="kind" value="Non-functional"/>
+        <StringProperty name="verifyMethod" value="Performance review"/>
+        <StringProperty name="risk" value="Medium"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_nfr_03" modelType="Requirement" name="NFR-03 Підтримуваність архітектури">
+      <ModelProperties>
+        <StringProperty name="id" value="NFR-03"/>
+        <StringProperty name="requirementId" value="NFR-03"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Код системи повинен бути розділений на Razor Pages, сервіси інтеграцій, доменні моделі та шар доступу до даних."/>
+        <StringProperty name="kind" value="Non-functional"/>
+        <StringProperty name="verifyMethod" value="Code review"/>
+        <StringProperty name="risk" value="Medium"/>
+      </ModelProperties>
+    </Model>
+    <Model id="req_nfr_04" modelType="Requirement" name="NFR-04 Зручність інтерфейсу">
+      <ModelProperties>
+        <StringProperty name="id" value="NFR-04"/>
+        <StringProperty name="requirementId" value="NFR-04"/>
+        <StringProperty name="source" value="GamesInfoSys source code and thesis task"/>
+        <StringProperty name="text" value="Інтерфейс повинен бути зрозумілим для пошуку гри, перегляду картки та переходу до зовнішніх магазинів."/>
+        <StringProperty name="kind" value="Non-functional"/>
+        <StringProperty name="verifyMethod" value="Manual UI review"/>
+        <StringProperty name="risk" value="Low"/>
+      </ModelProperties>
+    </Model>
+
+  </Models>
+  <Diagrams>
+    <Diagram id="req_diagram" name="Requirement Diagram GamesInfoSys (читабельна)" diagramType="RequirementDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="shape_req_fr_01" shapeType="Requirement" model="req_fr_01" name="FR-01 Пошук відеоігор" x="60" y="70" width="400" height="95" zorder="1"/>
+        <Shape id="shape_req_fr_02" shapeType="Requirement" model="req_fr_02" name="FR-02 Перегляд картки гри" x="560" y="70" width="400" height="95" zorder="2"/>
+        <Shape id="shape_req_fr_03" shapeType="Requirement" model="req_fr_03" name="FR-03 Отримання метаданих RAWG" x="60" y="195" width="400" height="95" zorder="3"/>
+        <Shape id="shape_req_fr_04" shapeType="Requirement" model="req_fr_04" name="FR-04 Агрегація цінових пропозицій" x="560" y="195" width="400" height="95" zorder="4"/>
+        <Shape id="shape_req_fr_05" shapeType="Requirement" model="req_fr_05" name="FR-05 Ручне уточнення Steam App ID" x="60" y="320" width="400" height="95" zorder="5"/>
+        <Shape id="shape_req_fr_06" shapeType="Requirement" model="req_fr_06" name="FR-06 Збереження пропозицій та історії цін" x="560" y="320" width="400" height="95" zorder="6"/>
+        <Shape id="shape_req_fr_07" shapeType="Requirement" model="req_fr_07" name="FR-07 Конвертація цін у гривню" x="60" y="445" width="400" height="95" zorder="7"/>
+        <Shape id="shape_req_fr_08" shapeType="Requirement" model="req_fr_08" name="FR-08 Зміна мови інтерфейсу" x="560" y="445" width="400" height="95" zorder="8"/>
+        <Shape id="shape_req_nfr_01" shapeType="Requirement" model="req_nfr_01" name="NFR-01 Стійкість зовнішніх HTTP-запитів" x="60" y="570" width="400" height="95" zorder="9"/>
+        <Shape id="shape_req_nfr_02" shapeType="Requirement" model="req_nfr_02" name="NFR-02 Продуктивність пошуку та перегляду" x="560" y="570" width="400" height="95" zorder="10"/>
+        <Shape id="shape_req_nfr_03" shapeType="Requirement" model="req_nfr_03" name="NFR-03 Підтримуваність архітектури" x="60" y="695" width="400" height="95" zorder="11"/>
+        <Shape id="shape_req_nfr_04" shapeType="Requirement" model="req_nfr_04" name="NFR-04 Зручність інтерфейсу" x="560" y="695" width="400" height="95" zorder="12"/>
+
+      </Shapes>
+    </Diagram>
+  </Diagrams>
+</Project>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://www.visual-paradigm.com/product/vpuml/modelexporter" name="GamesInfoSys Checked Use Case" umlVersion="2.x" exporterVersion="18.0" author="Codex">
+  <Models>
+    <Model id="uc_actor_user" modelType="Actor" name="Користувач"/>
+    <Model id="uc_actor_rawg" modelType="Actor" name="RAWG API"/>
+    <Model id="uc_actor_stores" modelType="Actor" name="Steam / CheapShark"/>
+    <Model id="uc_actor_ua" modelType="Actor" name="Prom.ua / OLX"/>
+    <Model id="uc_actor_nbu" modelType="Actor" name="НБУ"/>
+    <Model id="uc_note_user" modelType="Class" name="Користувач"/>
+    <Model id="uc_note_rawg" modelType="Class" name="RAWG API"/>
+    <Model id="uc_note_stores" modelType="Class" name="Steam / CheapShark"/>
+    <Model id="uc_note_ua" modelType="Class" name="Prom.ua / OLX"/>
+    <Model id="uc_note_nbu" modelType="Class" name="НБУ"/>
+    <Model id="uc_search" modelType="UseCase" name="Шукати відеоігри"/>
+    <Model id="uc_view" modelType="UseCase" name="Переглядати картку гри"/>
+    <Model id="uc_sync_meta" modelType="UseCase" name="Отримувати метадані гри"/>
+    <Model id="uc_sync_offers" modelType="UseCase" name="Оновлювати пропозиції магазинів"/>
+    <Model id="uc_convert" modelType="UseCase" name="Перераховувати ціни у гривню"/>
+    <Model id="uc_set_steam" modelType="UseCase" name="Уточнювати Steam App ID"/>
+    <Model id="uc_open_store" modelType="UseCase" name="Переходити до магазину"/>
+    <Model id="uc_language" modelType="UseCase" name="Змінювати мову інтерфейсу"/>
+
+    <Model id="uc_a_user_search" modelType="Association" name=""/>
+    <Model id="uc_a_user_view" modelType="Association" name=""/>
+    <Model id="uc_a_user_set" modelType="Association" name=""/>
+    <Model id="uc_a_user_store" modelType="Association" name=""/>
+    <Model id="uc_a_user_lang" modelType="Association" name=""/>
+    <Model id="uc_a_rawg" modelType="Association" name=""/>
+    <Model id="uc_a_stores" modelType="Association" name=""/>
+    <Model id="uc_a_ua" modelType="Association" name=""/>
+    <Model id="uc_a_nbu" modelType="Association" name=""/>
+    <Model id="uc_inc_view_meta" modelType="Usage" name="&lt;&lt;include&gt;&gt;"/>
+    <Model id="uc_inc_view_offers" modelType="Usage" name="&lt;&lt;include&gt;&gt;"/>
+    <Model id="uc_inc_offers_convert" modelType="Usage" name="&lt;&lt;include&gt;&gt;"/>
+    <Model id="uc_ext_set_steam" modelType="Dependency" name="&lt;&lt;extend&gt;&gt;"/>
+  </Models>
+  <Diagrams>
+    <Diagram id="uc_diagram" name="Use Case GamesInfoSys (читабельна VP)" diagramType="UseCaseDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="uc_s_user" shapeType="Actor" model="uc_actor_user" name="Користувач" x="40" y="260" width="90" height="140" zorder="1"/>
+        <Shape id="uc_s_rawg" shapeType="Actor" model="uc_actor_rawg" name="RAWG API" x="930" y="90" width="90" height="120" zorder="2"/>
+        <Shape id="uc_s_stores" shapeType="Actor" model="uc_actor_stores" name="Steam / CheapShark" x="920" y="240" width="130" height="120" zorder="3"/>
+        <Shape id="uc_s_ua" shapeType="Actor" model="uc_actor_ua" name="Prom.ua / OLX" x="925" y="380" width="120" height="120" zorder="4"/>
+        <Shape id="uc_s_nbu" shapeType="Actor" model="uc_actor_nbu" name="НБУ" x="930" y="520" width="90" height="120" zorder="5"/>
+        <Shape id="uc_s_note_user" shapeType="Class" model="uc_note_user" name="Користувач" x="25" y="400" width="120" height="35" zorder="6"/>
+        <Shape id="uc_s_note_rawg" shapeType="Class" model="uc_note_rawg" name="RAWG API" x="910" y="205" width="130" height="35" zorder="7"/>
+        <Shape id="uc_s_note_stores" shapeType="Class" model="uc_note_stores" name="Steam / CheapShark" x="895" y="355" width="170" height="35" zorder="8"/>
+        <Shape id="uc_s_note_ua" shapeType="Class" model="uc_note_ua" name="Prom.ua / OLX" x="905" y="495" width="150" height="35" zorder="9"/>
+        <Shape id="uc_s_note_nbu" shapeType="Class" model="uc_note_nbu" name="НБУ" x="930" y="635" width="90" height="35" zorder="10"/>
+        <Shape id="uc_s_search" shapeType="UseCase" model="uc_search" name="Шукати відеоігри" x="280" y="80" width="210" height="70" zorder="11"/>
+        <Shape id="uc_s_view" shapeType="UseCase" model="uc_view" name="Переглядати картку гри" x="280" y="190" width="230" height="70" zorder="12"/>
+        <Shape id="uc_s_meta" shapeType="UseCase" model="uc_sync_meta" name="Отримувати метадані гри" x="580" y="120" width="240" height="70" zorder="13"/>
+        <Shape id="uc_s_offers" shapeType="UseCase" model="uc_sync_offers" name="Оновлювати пропозиції магазинів" x="560" y="260" width="280" height="70" zorder="14"/>
+        <Shape id="uc_s_convert" shapeType="UseCase" model="uc_convert" name="Перераховувати ціни у гривню" x="560" y="410" width="270" height="70" zorder="15"/>
+        <Shape id="uc_s_set" shapeType="UseCase" model="uc_set_steam" name="Уточнювати Steam App ID" x="280" y="320" width="240" height="70" zorder="16"/>
+        <Shape id="uc_s_store" shapeType="UseCase" model="uc_open_store" name="Переходити до магазину" x="280" y="450" width="230" height="70" zorder="17"/>
+        <Shape id="uc_s_lang" shapeType="UseCase" model="uc_language" name="Змінювати мову інтерфейсу" x="280" y="550" width="250" height="70" zorder="18"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="uc_c_user_search" shapeType="Association" model="uc_a_user_search" from="uc_s_user" to="uc_s_search" connectorStyle="Rectlinear"><Points><Point x="130" y="285"/><Point x="280" y="115"/></Points></Connector>
+        <Connector id="uc_c_user_view" shapeType="Association" model="uc_a_user_view" from="uc_s_user" to="uc_s_view" connectorStyle="Rectlinear"><Points><Point x="130" y="300"/><Point x="280" y="225"/></Points></Connector>
+        <Connector id="uc_c_user_set" shapeType="Association" model="uc_a_user_set" from="uc_s_user" to="uc_s_set" connectorStyle="Rectlinear"><Points><Point x="130" y="330"/><Point x="280" y="355"/></Points></Connector>
+        <Connector id="uc_c_user_store" shapeType="Association" model="uc_a_user_store" from="uc_s_user" to="uc_s_store" connectorStyle="Rectlinear"><Points><Point x="130" y="360"/><Point x="280" y="485"/></Points></Connector>
+        <Connector id="uc_c_user_lang" shapeType="Association" model="uc_a_user_lang" from="uc_s_user" to="uc_s_lang" connectorStyle="Rectlinear"><Points><Point x="100" y="400"/><Point x="100" y="585"/><Point x="280" y="585"/></Points></Connector>
+        <Connector id="uc_c_rawg" shapeType="Association" model="uc_a_rawg" from="uc_s_rawg" to="uc_s_meta" connectorStyle="Rectlinear"><Points><Point x="930" y="150"/><Point x="820" y="155"/></Points></Connector>
+        <Connector id="uc_c_stores" shapeType="Association" model="uc_a_stores" from="uc_s_stores" to="uc_s_offers" connectorStyle="Rectlinear"><Points><Point x="920" y="300"/><Point x="840" y="295"/></Points></Connector>
+        <Connector id="uc_c_ua" shapeType="Association" model="uc_a_ua" from="uc_s_ua" to="uc_s_offers" connectorStyle="Rectlinear"><Points><Point x="925" y="440"/><Point x="840" y="330"/></Points></Connector>
+        <Connector id="uc_c_nbu" shapeType="Association" model="uc_a_nbu" from="uc_s_nbu" to="uc_s_convert" connectorStyle="Rectlinear"><Points><Point x="930" y="560"/><Point x="830" y="445"/></Points></Connector>
+        <Connector id="uc_c_inc_meta" shapeType="Usage" model="uc_inc_view_meta" name="&lt;&lt;include&gt;&gt;" from="uc_s_view" to="uc_s_meta" connectorStyle="Rectlinear"><Points><Point x="510" y="215"/><Point x="580" y="155"/></Points></Connector>
+        <Connector id="uc_c_inc_offers" shapeType="Usage" model="uc_inc_view_offers" name="&lt;&lt;include&gt;&gt;" from="uc_s_view" to="uc_s_offers" connectorStyle="Rectlinear"><Points><Point x="510" y="240"/><Point x="560" y="295"/></Points></Connector>
+        <Connector id="uc_c_inc_convert" shapeType="Usage" model="uc_inc_offers_convert" name="&lt;&lt;include&gt;&gt;" from="uc_s_offers" to="uc_s_convert" connectorStyle="Rectlinear"><Points><Point x="700" y="330"/><Point x="700" y="410"/></Points></Connector>
+        <Connector id="uc_c_ext_set" shapeType="Dependency" model="uc_ext_set_steam" name="&lt;&lt;extend&gt;&gt;" from="uc_s_set" to="uc_s_offers" connectorStyle="Rectlinear"><Points><Point x="520" y="355"/><Point x="560" y="310"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+  </Diagrams>
+</Project>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://www.visual-paradigm.com/product/vpuml/modelexporter" name="GamesInfoSys Checked DFD" umlVersion="2.x" exporterVersion="18.0" author="Codex">
+  <Models>
+    <Model id="vp_user" modelType="DFExternalEntity" name="Користувач"><ModelProperties><StringProperty name="dfId" value="E1"/></ModelProperties></Model>
+    <Model id="vp_rawg" modelType="DFExternalEntity" name="RAWG API"><ModelProperties><StringProperty name="dfId" value="E2"/></ModelProperties></Model>
+    <Model id="vp_steam" modelType="DFExternalEntity" name="Steam"><ModelProperties><StringProperty name="dfId" value="E3"/></ModelProperties></Model>
+    <Model id="vp_cheap" modelType="DFExternalEntity" name="CheapShark"><ModelProperties><StringProperty name="dfId" value="E4"/></ModelProperties></Model>
+    <Model id="vp_nbu" modelType="DFExternalEntity" name="НБУ"><ModelProperties><StringProperty name="dfId" value="E5"/></ModelProperties></Model>
+    <Model id="vp_ua_market" modelType="DFExternalEntity" name="Prom.ua / OLX"><ModelProperties><StringProperty name="dfId" value="E6"/></ModelProperties></Model>
+    <Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"><ModelProperties><StringProperty name="dfId" value="0"/></ModelProperties></Model>
+    <Model id="vp_p1" modelType="DFProcess" name="1. Обробити пошуковий запит"><ModelProperties><StringProperty name="dfId" value="1"/></ModelProperties></Model>
+    <Model id="vp_p2" modelType="DFProcess" name="2. Отримати метадані гри"><ModelProperties><StringProperty name="dfId" value="2"/></ModelProperties></Model>
+    <Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"><ModelProperties><StringProperty name="dfId" value="3"/></ModelProperties></Model>
+    <Model id="vp_p4" modelType="DFProcess" name="4. Перерахувати ціни у гривню"><ModelProperties><StringProperty name="dfId" value="4"/></ModelProperties></Model>
+    <Model id="vp_p5" modelType="DFProcess" name="5. Сформувати каталог і картку гри"><ModelProperties><StringProperty name="dfId" value="5"/></ModelProperties></Model>
+    <Model id="vp_store" modelType="DFDataStore" name="D1 SQLite: ігри, пропозиції, історія цін"><ModelProperties><IntegerProperty name="type" value="0"/><StringProperty name="dfId" value="D1"/></ModelProperties></Model>
+
+    <Model id="vp_f_user_req" modelType="DFDataFlow" name="Пошуковий запит, фільтри, вибір гри"><FromEnd><Model id="vp_user" modelType="DFExternalEntity" name="Користувач"/></FromEnd><ToEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></ToEnd></Model>
+    <Model id="vp_f_user_resp" modelType="DFDataFlow" name="Каталог, картка гри, ціни, посилання"><FromEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></FromEnd><ToEnd><Model id="vp_user" modelType="DFExternalEntity" name="Користувач"/></ToEnd></Model>
+    <Model id="vp_f_rawg_req" modelType="DFDataFlow" name="Запит метаданих гри"><FromEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></FromEnd><ToEnd><Model id="vp_rawg" modelType="DFExternalEntity" name="RAWG API"/></ToEnd></Model>
+    <Model id="vp_f_rawg_resp" modelType="DFDataFlow" name="Опис, жанри, рейтинги, зображення"><FromEnd><Model id="vp_rawg" modelType="DFExternalEntity" name="RAWG API"/></FromEnd><ToEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></ToEnd></Model>
+    <Model id="vp_f_steam_req" modelType="DFDataFlow" name="Запит пропозицій Steam"><FromEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></FromEnd><ToEnd><Model id="vp_steam" modelType="DFExternalEntity" name="Steam"/></ToEnd></Model>
+    <Model id="vp_f_steam_resp" modelType="DFDataFlow" name="Ціни Steam і посилання"><FromEnd><Model id="vp_steam" modelType="DFExternalEntity" name="Steam"/></FromEnd><ToEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></ToEnd></Model>
+    <Model id="vp_f_cheap_req" modelType="DFDataFlow" name="Запит пропозицій CheapShark"><FromEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></FromEnd><ToEnd><Model id="vp_cheap" modelType="DFExternalEntity" name="CheapShark"/></ToEnd></Model>
+    <Model id="vp_f_cheap_resp" modelType="DFDataFlow" name="Ціни CheapShark і посилання"><FromEnd><Model id="vp_cheap" modelType="DFExternalEntity" name="CheapShark"/></FromEnd><ToEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></ToEnd></Model>
+    <Model id="vp_f_nbu_req" modelType="DFDataFlow" name="Запит курсу валют"><FromEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></FromEnd><ToEnd><Model id="vp_nbu" modelType="DFExternalEntity" name="НБУ"/></ToEnd></Model>
+    <Model id="vp_f_nbu_resp" modelType="DFDataFlow" name="Курс для перерахунку у UAH"><FromEnd><Model id="vp_nbu" modelType="DFExternalEntity" name="НБУ"/></FromEnd><ToEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></ToEnd></Model>
+    <Model id="vp_f_ua_req" modelType="DFDataFlow" name="Запит українських пропозицій"><FromEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></FromEnd><ToEnd><Model id="vp_ua_market" modelType="DFExternalEntity" name="Prom.ua / OLX"/></ToEnd></Model>
+    <Model id="vp_f_ua_resp" modelType="DFDataFlow" name="Назви, URL і ціни в UAH"><FromEnd><Model id="vp_ua_market" modelType="DFExternalEntity" name="Prom.ua / OLX"/></FromEnd><ToEnd><Model id="vp_system" modelType="DFProcess" name="0. GamesInfoSys"/></ToEnd></Model>
+
+    <Model id="vp_l_user_p1" modelType="DFDataFlow" name="Параметри пошуку"><FromEnd><Model id="vp_user" modelType="DFExternalEntity" name="Користувач"/></FromEnd><ToEnd><Model id="vp_p1" modelType="DFProcess" name="1. Обробити пошуковий запит"/></ToEnd></Model>
+    <Model id="vp_l_p1_p2" modelType="DFDataFlow" name="Назва гри та обмеження пошуку"><FromEnd><Model id="vp_p1" modelType="DFProcess" name="1. Обробити пошуковий запит"/></FromEnd><ToEnd><Model id="vp_p2" modelType="DFProcess" name="2. Отримати метадані гри"/></ToEnd></Model>
+    <Model id="vp_l_p2_rawg" modelType="DFDataFlow" name="Запит до RAWG"><FromEnd><Model id="vp_p2" modelType="DFProcess" name="2. Отримати метадані гри"/></FromEnd><ToEnd><Model id="vp_rawg" modelType="DFExternalEntity" name="RAWG API"/></ToEnd></Model>
+    <Model id="vp_l_rawg_p2" modelType="DFDataFlow" name="Метадані гри"><FromEnd><Model id="vp_rawg" modelType="DFExternalEntity" name="RAWG API"/></FromEnd><ToEnd><Model id="vp_p2" modelType="DFProcess" name="2. Отримати метадані гри"/></ToEnd></Model>
+    <Model id="vp_l_p2_p3" modelType="DFDataFlow" name="Ідентифікатор гри"><FromEnd><Model id="vp_p2" modelType="DFProcess" name="2. Отримати метадані гри"/></FromEnd><ToEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></ToEnd></Model>
+    <Model id="vp_l_p3_steam" modelType="DFDataFlow" name="Запит цін Steam"><FromEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></FromEnd><ToEnd><Model id="vp_steam" modelType="DFExternalEntity" name="Steam"/></ToEnd></Model>
+    <Model id="vp_l_steam_p3" modelType="DFDataFlow" name="Пропозиції Steam"><FromEnd><Model id="vp_steam" modelType="DFExternalEntity" name="Steam"/></FromEnd><ToEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></ToEnd></Model>
+    <Model id="vp_l_p3_cheap" modelType="DFDataFlow" name="Запит цін CheapShark"><FromEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></FromEnd><ToEnd><Model id="vp_cheap" modelType="DFExternalEntity" name="CheapShark"/></ToEnd></Model>
+    <Model id="vp_l_cheap_p3" modelType="DFDataFlow" name="Пропозиції CheapShark"><FromEnd><Model id="vp_cheap" modelType="DFExternalEntity" name="CheapShark"/></FromEnd><ToEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></ToEnd></Model>
+    <Model id="vp_l_p3_p4" modelType="DFDataFlow" name="Ціни в оригінальних валютах"><FromEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></FromEnd><ToEnd><Model id="vp_p4" modelType="DFProcess" name="4. Перерахувати ціни у гривню"/></ToEnd></Model>
+    <Model id="vp_l_p4_nbu" modelType="DFDataFlow" name="Запит курсу НБУ"><FromEnd><Model id="vp_p4" modelType="DFProcess" name="4. Перерахувати ціни у гривню"/></FromEnd><ToEnd><Model id="vp_nbu" modelType="DFExternalEntity" name="НБУ"/></ToEnd></Model>
+    <Model id="vp_l_nbu_p4" modelType="DFDataFlow" name="Курс валют"><FromEnd><Model id="vp_nbu" modelType="DFExternalEntity" name="НБУ"/></FromEnd><ToEnd><Model id="vp_p4" modelType="DFProcess" name="4. Перерахувати ціни у гривню"/></ToEnd></Model>
+    <Model id="vp_l_p3_ua" modelType="DFDataFlow" name="Пошукові запити Xbox/Switch"><FromEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></FromEnd><ToEnd><Model id="vp_ua_market" modelType="DFExternalEntity" name="Prom.ua / OLX"/></ToEnd></Model>
+    <Model id="vp_l_ua_p3" modelType="DFDataFlow" name="Українські пропозиції UAH"><FromEnd><Model id="vp_ua_market" modelType="DFExternalEntity" name="Prom.ua / OLX"/></FromEnd><ToEnd><Model id="vp_p3" modelType="DFProcess" name="3. Агрегувати магазинні пропозиції"/></ToEnd></Model>
+    <Model id="vp_l_p4_store" modelType="DFDataFlow" name="Оновлені ціни та історія"><FromEnd><Model id="vp_p4" modelType="DFProcess" name="4. Перерахувати ціни у гривню"/></FromEnd><ToEnd><Model id="vp_store" modelType="DFDataStore" name="D1 SQLite: ігри, пропозиції, історія цін"/></ToEnd></Model>
+    <Model id="vp_l_store_p5" modelType="DFDataFlow" name="Збережені ігри, пропозиції, історія"><FromEnd><Model id="vp_store" modelType="DFDataStore" name="D1 SQLite: ігри, пропозиції, історія цін"/></FromEnd><ToEnd><Model id="vp_p5" modelType="DFProcess" name="5. Сформувати каталог і картку гри"/></ToEnd></Model>
+    <Model id="vp_l_p2_store" modelType="DFDataFlow" name="Метадані для збереження"><FromEnd><Model id="vp_p2" modelType="DFProcess" name="2. Отримати метадані гри"/></FromEnd><ToEnd><Model id="vp_store" modelType="DFDataStore" name="D1 SQLite: ігри, пропозиції, історія цін"/></ToEnd></Model>
+    <Model id="vp_l_p5_user" modelType="DFDataFlow" name="Каталог, картка гри, пропозиції"><FromEnd><Model id="vp_p5" modelType="DFProcess" name="5. Сформувати каталог і картку гри"/></FromEnd><ToEnd><Model id="vp_user" modelType="DFExternalEntity" name="Користувач"/></ToEnd></Model>
+  </Models>
+  <Diagrams>
+    <Diagram id="vp_d_context" name="Контекстна DFD GamesInfoSys (VP)" diagramType="DataFlowDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="vp_s_user" shapeType="DFExternalEntity" model="vp_user" name="Користувач" x="40" y="230" width="150" height="70" zorder="1"/>
+        <Shape id="vp_s_system" shapeType="DFProcess" model="vp_system" name="0. GamesInfoSys" x="310" y="190" width="250" height="150" zorder="2"/>
+        <Shape id="vp_s_rawg" shapeType="DFExternalEntity" model="vp_rawg" name="RAWG API" x="700" y="40" width="150" height="70" zorder="3"/>
+        <Shape id="vp_s_steam" shapeType="DFExternalEntity" model="vp_steam" name="Steam" x="700" y="150" width="150" height="70" zorder="4"/>
+        <Shape id="vp_s_cheap" shapeType="DFExternalEntity" model="vp_cheap" name="CheapShark" x="700" y="260" width="150" height="70" zorder="5"/>
+        <Shape id="vp_s_nbu" shapeType="DFExternalEntity" model="vp_nbu" name="НБУ" x="700" y="370" width="150" height="70" zorder="6"/>
+        <Shape id="vp_s_ua_market" shapeType="DFExternalEntity" model="vp_ua_market" name="Prom.ua / OLX" x="700" y="480" width="150" height="70" zorder="7"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="vp_c_user_req" shapeType="DFDataFlow" model="vp_f_user_req" name="Пошуковий запит, фільтри, вибір гри" from="vp_s_user" to="vp_s_system" connectorStyle="Rectlinear"><Points><Point x="190" y="250"/><Point x="310" y="250"/></Points></Connector>
+        <Connector id="vp_c_user_resp" shapeType="DFDataFlow" model="vp_f_user_resp" name="Каталог, картка гри, ціни, посилання" from="vp_s_system" to="vp_s_user" connectorStyle="Rectlinear"><Points><Point x="310" y="290"/><Point x="190" y="290"/></Points></Connector>
+        <Connector id="vp_c_rawg_req" shapeType="DFDataFlow" model="vp_f_rawg_req" name="Запит метаданих гри" from="vp_s_system" to="vp_s_rawg" connectorStyle="Rectlinear"><Points><Point x="560" y="210"/><Point x="700" y="75"/></Points></Connector>
+        <Connector id="vp_c_rawg_resp" shapeType="DFDataFlow" model="vp_f_rawg_resp" name="Опис, жанри, рейтинги, зображення" from="vp_s_rawg" to="vp_s_system" connectorStyle="Rectlinear"><Points><Point x="700" y="95"/><Point x="560" y="230"/></Points></Connector>
+        <Connector id="vp_c_steam_req" shapeType="DFDataFlow" model="vp_f_steam_req" name="Запит пропозицій Steam" from="vp_s_system" to="vp_s_steam" connectorStyle="Rectlinear"><Points><Point x="560" y="245"/><Point x="700" y="185"/></Points></Connector>
+        <Connector id="vp_c_steam_resp" shapeType="DFDataFlow" model="vp_f_steam_resp" name="Ціни Steam і посилання" from="vp_s_steam" to="vp_s_system" connectorStyle="Rectlinear"><Points><Point x="700" y="205"/><Point x="560" y="265"/></Points></Connector>
+        <Connector id="vp_c_cheap_req" shapeType="DFDataFlow" model="vp_f_cheap_req" name="Запит пропозицій CheapShark" from="vp_s_system" to="vp_s_cheap" connectorStyle="Rectlinear"><Points><Point x="560" y="285"/><Point x="700" y="295"/></Points></Connector>
+        <Connector id="vp_c_cheap_resp" shapeType="DFDataFlow" model="vp_f_cheap_resp" name="Ціни CheapShark і посилання" from="vp_s_cheap" to="vp_s_system" connectorStyle="Rectlinear"><Points><Point x="700" y="315"/><Point x="560" y="305"/></Points></Connector>
+        <Connector id="vp_c_nbu_req" shapeType="DFDataFlow" model="vp_f_nbu_req" name="Запит курсу валют" from="vp_s_system" to="vp_s_nbu" connectorStyle="Rectlinear"><Points><Point x="560" y="325"/><Point x="700" y="405"/></Points></Connector>
+        <Connector id="vp_c_nbu_resp" shapeType="DFDataFlow" model="vp_f_nbu_resp" name="Курс для перерахунку у UAH" from="vp_s_nbu" to="vp_s_system" connectorStyle="Rectlinear"><Points><Point x="700" y="425"/><Point x="560" y="335"/></Points></Connector>
+        <Connector id="vp_c_ua_req" shapeType="DFDataFlow" model="vp_f_ua_req" name="Запит українських пропозицій" from="vp_s_system" to="vp_s_ua_market" connectorStyle="Rectlinear"><Points><Point x="540" y="340"/><Point x="700" y="515"/></Points></Connector>
+        <Connector id="vp_c_ua_resp" shapeType="DFDataFlow" model="vp_f_ua_resp" name="Назви, URL і ціни в UAH" from="vp_s_ua_market" to="vp_s_system" connectorStyle="Rectlinear"><Points><Point x="700" y="535"/><Point x="520" y="340"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+    <Diagram id="vp_d_level0" name="DFD рівня 0 GamesInfoSys (VP)" diagramType="DataFlowDiagram" connectorStyle="Rectlinear">
+      <Shapes>
+        <Shape id="vp_l_s_user" shapeType="DFExternalEntity" model="vp_user" name="Користувач" x="40" y="240" width="150" height="70" zorder="1"/>
+        <Shape id="vp_l_s_p1" shapeType="DFProcess" model="vp_p1" name="1. Обробити пошуковий запит" x="250" y="230" width="180" height="80" zorder="2"/>
+        <Shape id="vp_l_s_p2" shapeType="DFProcess" model="vp_p2" name="2. Отримати метадані гри" x="500" y="80" width="190" height="80" zorder="3"/>
+        <Shape id="vp_l_s_p3" shapeType="DFProcess" model="vp_p3" name="3. Агрегувати магазинні пропозиції" x="500" y="260" width="190" height="80" zorder="4"/>
+        <Shape id="vp_l_s_p4" shapeType="DFProcess" model="vp_p4" name="4. Перерахувати ціни у гривню" x="760" y="260" width="190" height="80" zorder="5"/>
+        <Shape id="vp_l_s_p5" shapeType="DFProcess" model="vp_p5" name="5. Сформувати каталог і картку гри" x="500" y="480" width="210" height="80" zorder="6"/>
+        <Shape id="vp_l_s_store" shapeType="DFDataStore" model="vp_store" name="D1 SQLite: ігри, пропозиції, історія цін" x="760" y="480" width="230" height="70" zorder="7"/>
+        <Shape id="vp_l_s_rawg" shapeType="DFExternalEntity" model="vp_rawg" name="RAWG API" x="760" y="80" width="150" height="70" zorder="8"/>
+        <Shape id="vp_l_s_steam" shapeType="DFExternalEntity" model="vp_steam" name="Steam" x="760" y="160" width="150" height="70" zorder="9"/>
+        <Shape id="vp_l_s_cheap" shapeType="DFExternalEntity" model="vp_cheap" name="CheapShark" x="760" y="370" width="150" height="70" zorder="10"/>
+        <Shape id="vp_l_s_nbu" shapeType="DFExternalEntity" model="vp_nbu" name="НБУ" x="1010" y="260" width="150" height="70" zorder="11"/>
+        <Shape id="vp_l_s_ua_market" shapeType="DFExternalEntity" model="vp_ua_market" name="Prom.ua / OLX" x="1010" y="390" width="150" height="70" zorder="12"/>
+      </Shapes>
+      <Connectors>
+        <Connector id="vp_l_c_user_p1" shapeType="DFDataFlow" model="vp_l_user_p1" name="Параметри пошуку" from="vp_l_s_user" to="vp_l_s_p1" connectorStyle="Rectlinear"><Points><Point x="190" y="275"/><Point x="250" y="275"/></Points></Connector>
+        <Connector id="vp_l_c_p1_p2" shapeType="DFDataFlow" model="vp_l_p1_p2" name="Назва гри та обмеження пошуку" from="vp_l_s_p1" to="vp_l_s_p2" connectorStyle="Rectlinear"><Points><Point x="430" y="250"/><Point x="465" y="120"/><Point x="500" y="120"/></Points></Connector>
+        <Connector id="vp_l_c_p2_rawg" shapeType="DFDataFlow" model="vp_l_p2_rawg" name="Запит до RAWG" from="vp_l_s_p2" to="vp_l_s_rawg" connectorStyle="Rectlinear"><Points><Point x="690" y="105"/><Point x="760" y="105"/></Points></Connector>
+        <Connector id="vp_l_c_rawg_p2" shapeType="DFDataFlow" model="vp_l_rawg_p2" name="Метадані гри" from="vp_l_s_rawg" to="vp_l_s_p2" connectorStyle="Rectlinear"><Points><Point x="760" y="135"/><Point x="690" y="135"/></Points></Connector>
+        <Connector id="vp_l_c_p2_p3" shapeType="DFDataFlow" model="vp_l_p2_p3" name="Ідентифікатор гри" from="vp_l_s_p2" to="vp_l_s_p3" connectorStyle="Rectlinear"><Points><Point x="595" y="160"/><Point x="595" y="260"/></Points></Connector>
+        <Connector id="vp_l_c_p3_steam" shapeType="DFDataFlow" model="vp_l_p3_steam" name="Запит цін Steam" from="vp_l_s_p3" to="vp_l_s_steam" connectorStyle="Rectlinear"><Points><Point x="690" y="280"/><Point x="725" y="195"/><Point x="760" y="195"/></Points></Connector>
+        <Connector id="vp_l_c_steam_p3" shapeType="DFDataFlow" model="vp_l_steam_p3" name="Пропозиції Steam" from="vp_l_s_steam" to="vp_l_s_p3" connectorStyle="Rectlinear"><Points><Point x="760" y="215"/><Point x="725" y="300"/><Point x="690" y="300"/></Points></Connector>
+        <Connector id="vp_l_c_p3_cheap" shapeType="DFDataFlow" model="vp_l_p3_cheap" name="Запит цін CheapShark" from="vp_l_s_p3" to="vp_l_s_cheap" connectorStyle="Rectlinear"><Points><Point x="690" y="320"/><Point x="725" y="405"/><Point x="760" y="405"/></Points></Connector>
+        <Connector id="vp_l_c_cheap_p3" shapeType="DFDataFlow" model="vp_l_cheap_p3" name="Пропозиції CheapShark" from="vp_l_s_cheap" to="vp_l_s_p3" connectorStyle="Rectlinear"><Points><Point x="760" y="385"/><Point x="725" y="310"/><Point x="690" y="310"/></Points></Connector>
+        <Connector id="vp_l_c_p3_p4" shapeType="DFDataFlow" model="vp_l_p3_p4" name="Ціни в оригінальних валютах" from="vp_l_s_p3" to="vp_l_s_p4" connectorStyle="Rectlinear"><Points><Point x="690" y="300"/><Point x="760" y="300"/></Points></Connector>
+        <Connector id="vp_l_c_p4_nbu" shapeType="DFDataFlow" model="vp_l_p4_nbu" name="Запит курсу НБУ" from="vp_l_s_p4" to="vp_l_s_nbu" connectorStyle="Rectlinear"><Points><Point x="950" y="285"/><Point x="1010" y="285"/></Points></Connector>
+        <Connector id="vp_l_c_nbu_p4" shapeType="DFDataFlow" model="vp_l_nbu_p4" name="Курс валют" from="vp_l_s_nbu" to="vp_l_s_p4" connectorStyle="Rectlinear"><Points><Point x="1010" y="315"/><Point x="950" y="315"/></Points></Connector>
+        <Connector id="vp_l_c_p3_ua" shapeType="DFDataFlow" model="vp_l_p3_ua" name="Пошукові запити Xbox/Switch" from="vp_l_s_p3" to="vp_l_s_ua_market" connectorStyle="Rectlinear"><Points><Point x="690" y="335"/><Point x="1010" y="410"/></Points></Connector>
+        <Connector id="vp_l_c_ua_p3" shapeType="DFDataFlow" model="vp_l_ua_p3" name="Українські пропозиції UAH" from="vp_l_s_ua_market" to="vp_l_s_p3" connectorStyle="Rectlinear"><Points><Point x="1010" y="440"/><Point x="690" y="325"/></Points></Connector>
+        <Connector id="vp_l_c_p4_store" shapeType="DFDataFlow" model="vp_l_p4_store" name="Оновлені ціни та історія" from="vp_l_s_p4" to="vp_l_s_store" connectorStyle="Rectlinear"><Points><Point x="855" y="340"/><Point x="855" y="480"/></Points></Connector>
+        <Connector id="vp_l_c_p2_store" shapeType="DFDataFlow" model="vp_l_p2_store" name="Метадані для збереження" from="vp_l_s_p2" to="vp_l_s_store" connectorStyle="Rectlinear"><Points><Point x="650" y="160"/><Point x="875" y="480"/></Points></Connector>
+        <Connector id="vp_l_c_store_p5" shapeType="DFDataFlow" model="vp_l_store_p5" name="Збережені ігри, пропозиції, історія" from="vp_l_s_store" to="vp_l_s_p5" connectorStyle="Rectlinear"><Points><Point x="760" y="515"/><Point x="710" y="515"/></Points></Connector>
+        <Connector id="vp_l_c_p5_user" shapeType="DFDataFlow" model="vp_l_p5_user" name="Каталог, картка гри, пропозиції" from="vp_l_s_p5" to="vp_l_s_user" connectorStyle="Rectlinear"><Points><Point x="500" y="520"/><Point x="120" y="520"/><Point x="120" y="310"/></Points></Connector>
+      </Connectors>
+    </Diagram>
+  </Diagrams>
+</Project>
